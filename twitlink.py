@@ -187,7 +187,7 @@ def musicFilter(s):
 
 def defaultFilter(s):
   mediaDomains = [
-    '4sq.com', 'vine.co', 'flick', 'instagr.am', 'instagram', '.jpg', 'rd.io'
+    '4sq.com', 'vine.co', 'flick', 'instagr.am', 'instagram', '.jpg', 'rd.io', 'jpeg'
   ]
   for u in s.urls:
     for m in mediaDomains:
@@ -216,12 +216,18 @@ def userview_helper(user, statusFilter):
     if max_id:
       params['max_id'] = max_id
     timeline = sess.get('statuses/user_timeline.json', params=params).json()
-    return statusview_helper(sess, user, timeline, isSelfPage=True)
+    return statusview_helper(sess, user, timeline, isSelfPage=True, statusFilter=statusFilter)
   else:
     return renderLogin()
 
 def statusview_helper(sess, screen_name, timeline, statusFilter=None, isSelfPage=False):
-  statuses = [twitter.Status.NewFromJsonDict(s) for s in timeline]
+  statuses = []
+  try:
+    statuses = [twitter.Status.NewFromJsonDict(s) for s in timeline]
+  except:
+    print timeline
+    return 'Sorry, something went wrong, feel free to let me know on twitter @blackmad'
+
   theUser = twitter.User.NewFromJsonDict(
     sess.get('users/show.json', params={'screen_name': screen_name}).json()
   )

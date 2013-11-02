@@ -3,7 +3,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link rel="stylesheet" href="/static/main.css" />
 </head>
-<body>
+<body class="timeline">
 {% block content %}
 <div class="container">
   <div class="userHeader">
@@ -26,6 +26,7 @@
   <div class="loadMore"><a href="" class="loadMoreLink">Load More</a></div>
   <div class="spinner"><img src="/static/spinner.gif"></div>
 </div>
+{% include 'footer.html' %}
 
 <script>
   $('.loadMoreLink').click(function() {
