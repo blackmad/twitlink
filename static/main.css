@@ -1,20 +1,90 @@
+.loginContent {
+  box-shadow: black 0.5em 0.5em 0.3em 
+  height: 400px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-200px; /* this is half the height of your div*/  
+  margin-left:-200px; /*this is half of width of your div*/
+  text-align: center;
+  background-color: #E1E6E2;
+  border-radius: 15px;
+  width: 400px;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.loginContent .demo {
+  margin: 10px;
+  padding: 10px;
+}
+
+.loginContent .demo img {
+  height: 250px;
+  box-shadow: gray 0.1em 0.1em 0.1em;
+}
+
+.loginPage {
+  background-color:#619D9B;
+}
+
+.spinner {
+  text-align: center;
+  display: none
+}
+
+.loading .loadMore {
+  display: none
+}
+
+.loading .spinner {
+  display: block;
+}
+
 .container {
   width: 600px;
   margin: 0 auto;
+  background-color: #E1E6E2;
+  border-radius: 4px;
+
+}
+
+.text div.link {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ol, ul {
+  list-style: none
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.li {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tweet {
-  background-color: 8DDAFF;
   padding: 10px;
   margin: 10px;
-  color: 7B76E8;
+  padding-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid #000;
 }
 
 .tweet a {
   color: 3C76E8;
   text-decoration: none;
   font-weight: 550;
+  max-width: 100px;
 }
 
 .time a {

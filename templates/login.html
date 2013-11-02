@@ -1,7 +1,20 @@
 <!doctype html>
-<title>Twitter Login</title>
-{% for message in get_flashed_messages() %}
-{{ message }}
-{% endfor %}
-<h1>Login</h1>
-<a href ="{{ url_for('login') }}">Login with Twitter</a>
+<html>
+<head>
+  <link rel="stylesheet" href="/static/main.css" />
+  <title>Login to Twitlink</title>
+</head>
+<body class="loginPage">
+  <div class="loginContent">
+    {% for message in get_flashed_messages() %}
+    {{ message }}
+    {% endfor %}
+    Turn your twitter feed into your own personal link blog.
+    <div class="demo">
+      <img src="/static/demo.png">
+    </div>
+
+    <a class="loginButton" href ="{{ loginUrl }}"><img src="/static/login.png"></a>
+  </div>
+</body>
+</html>

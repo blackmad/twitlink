@@ -1,5 +1,6 @@
 <html>
 <head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link rel="stylesheet" href="/static/main.css" />
 </head>
 <body>
@@ -8,12 +9,39 @@
   <div class="userHeader">
     <img src="{{ user.profile_image_url }}"/>
     <div class="name">
-      @{{ user.screen_name }}
+    {% if isSelfPage %}
+      @{{ user.screen_name }}'s Timeline Linkblog
+    {% else %}
+      @{{ user.screen_name }}'s Tweets Linkblog
+    {% endif %}
+
     </div>
   </div>
 
   {{ content|safe }}
+  <script>
+    var maxId = {{ max_id }};
+  </script>
+
+  <div class="loadMore"><a href="" class="loadMoreLink">Load More</a></div>
+  <div class="spinner"><img src="/static/spinner.gif"></div>
 </div>
+
+<script>
+  $('.loadMoreLink').click(function() {
+    $(document.body).addClass('loading');
+    $.ajax(window.location.pathname + '?noheader=true&max_id=' + maxId)
+      .done(function(data) {
+        $(document.body).removeClass('loading');
+        $('<div>' + data + '</div>').insertBefore($('.loadMore'));
+        maxId = $('.tweet').last().data('id');
+      })
+      .fail(function() {
+        alert( "error" );
+      })
+    return false;
+  });
+</script>
 {% endblock %}
 </body>
 </html>
