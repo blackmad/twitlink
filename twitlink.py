@@ -1,30 +1,27 @@
 '''
-    facebook
-    --------
+twitlink 
+a simple flask site to reformat twitter timelines into linkblog
 
-    A simple Flask demo app that shows how to login with Facebook via rauth.
-
-    Please note: you must do `from facebook import db; db.create_all()` from
-    the interpreter before running this example!
-    
-    Due to Facebook's stringent domain validation, requests using this app 
-    must originate from 127.0.0.1:5000.
+see https://github.com/blackmad/twitlink/tree/master
+and http://twitlink.blackmad.com/
 '''
 
-from flask import Flask, flash, request, redirect, render_template, url_for, session, escape
-from flask.ext.sqlalchemy import SQLAlchemy
-
-from rauth.service import OAuth2Service, OAuth1Service
-from rauth.utils import parse_utf8_qsl
-from werkzeug import BaseResponse
 import pickle
 import twitter
 import pytz
-from datetime import  datetime
-from dateutil.tz import tzoffset
 import urlparse
-from urlexpander import URLExpander
 import urllib
+
+from datetime import datetime
+from dateutil.tz import tzoffset
+
+from flask import Flask, flash, request, redirect, render_template, url_for, session, escape
+
+from rauth.service import OAuth1Service
+from rauth.utils import parse_utf8_qsl
+
+from urlexpander import URLExpander
+from models import *
 
 urlExpander = URLExpander()
 
@@ -36,52 +33,8 @@ DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_pyfile("application.cfg", silent=True)
-db = SQLAlchemy(app)
+db.init_app(app)
 
-class Link(db.Model):
-    id = db.Column(db.String(20), primary_key=True)
-    expanded_url = db.Column(db.String(500), unique=False)
-
-    def __init__(self, id, expanded_url):
-        self.id = id
-        self.expanded_url = expanded_url
-
-# models
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    fb_id = db.Column(db.String(120))
-    psession = db.Column(db.String(2020))
-    access_token = db.Column(db.String(120))
-    access_token_secret = db.Column(db.String(120))
-
-    def __init__(self, username, fb_id, s, at, ats):
-        self.username = username
-        self.fb_id = fb_id
-        self.psession = s
-        self.access_token = at
-        self.access_token_secret = ats
-
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-    @staticmethod
-    def get_or_create(username, fb_id, psession, access_token, access_token_secret):
-        user = User.query.filter_by(username=username).first()
-        if user is None:
-            user = User(username, fb_id, psession, access_token, access_token_secret)
-            db.session.add(user)
-        else:
-            user.psession = psession
-            user.access_token = access_token
-            user.access_token_secret = access_token_secret
-        db.session.commit()
-        return user
-
-
-
-
-# rauth OAuth 2.0 service wrapper
 twitterAuth = OAuth1Service(
     consumer_key=app.config['TWITTER_CONSUMER_KEY'],
     consumer_secret=app.config['TWITTER_CONSUMER_SECRET'],
@@ -306,5 +259,8 @@ def statusview_helper(sess, screen_name, timeline, statusFilter=None, isSelfPage
     )
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        # Extensions like Flask-SQLAlchemy now know what the "current" app
+        # is while within this block. Therefore, you can now run...
+        db.create_all()
     app.run(port=15000)

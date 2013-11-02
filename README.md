@@ -6,6 +6,17 @@ working twitter/rauth/flask app that saves login credentials in a session
 (the rauth docs are broken, they user twitter api v1, the answers on stackoverflow for saving sessions don't quite 
 work either)
 
+pip -r requirements.txt
+python twitlink.py
+
+or (cleaner)
+sudo pip install virtualenv
+virtualenv ENV
+source ENV/bin/activate
+pip -r requirements.txt
+python twitlink.py
+
+
 you'll want to create an application.cfg that looks like
 SECRET_KEY = '[randomness goes here]'
 TWITTER_CONSUMER_KEY = 'XXXXXXXXX'
