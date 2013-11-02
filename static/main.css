@@ -1,0 +1,41 @@
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.tweet {
+  background-color: 8DDAFF;
+  padding: 10px;
+  margin: 10px;
+  color: 7B76E8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tweet a {
+  color: 3C76E8;
+  text-decoration: none;
+  font-weight: 550;
+}
+
+.time a {
+  font-weight: normal;
+}
+
+.userHeader {
+  padding: 10px;
+  margin: 10px;
+  color: 7B76E8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  overflow: hidden;
+}
+
+.userHeader img {
+  float: left;
+}
+
+.userHeader .name {
+  float: left;
+  line-height: 40px;
+  margin-left: 58px;
+}
