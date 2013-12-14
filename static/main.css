@@ -1,3 +1,5 @@
+body { font-family: 'Gudea', sans-serif; }
+
 .loginContent {
   box-shadow: black 0.5em 0.5em 0.3em 
   height: 400px;
@@ -7,11 +9,10 @@
   margin-top:-200px; /* this is half the height of your div*/  
   margin-left:-200px; /*this is half of width of your div*/
   text-align: center;
-  background-color: #E1E6E2;
+  background-color: #f5f8fa;
   border-radius: 15px;
   width: 400px;
   padding: 20px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .loginContent .demo {
@@ -22,10 +23,6 @@
 .loginContent .demo img {
   height: 250px;
   box-shadow: gray 0.1em 0.1em 0.1em;
-}
-
-.loginPage {
-  background-color:#619D9B;
 }
 
 .spinner {
@@ -39,9 +36,8 @@
 
 .loadMore {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 .loadMore a {
@@ -55,80 +51,106 @@
 .container {
   width: 600px;
   margin: 0 auto;
-  background-color: #E1E6E2;
-  border-radius: 4px;
+  background-color: #f5f8fa;
+  padding:10px;
+  border-radius: 15px;
+}
+
+.name {
+color:grey;
+font-size:24px;
+float:right;
+padding: 8px;
+padding-right:0px;
+}
+
+
+.tweet {
+  padding: 20px;
+  border-bottom:1px dotted #55ACEE;
 
 }
 
-.text div.link {
-  max-width: 300px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.tweet:hover {
+  background-color:#ccd6dd;
+}
+
+/*.tweet a {
+  text-align:center;
+  color: #3C76E8;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 400;
+}*/
+
+.text {
+color:#292F33;
+}
+
+.links {
+  padding-bottom: 16px;
+}
+
+.links a {
+  color: #55ACEE;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.links a:hover {
+  color: #55ACEE;
+  text-decoration: underline;
+}
+
+.links a:visited {
+  color: #55ACEE;
 }
 
 ol, ul {
-  list-style: none
-}
-
-.text {
-  font-size: 20px;
-  font-weight: 600;
+list-style-type: none;
+padding: 0px;
+margin: 0px;
 }
 
 .li {
-  max-width: 300px;
-  white-space: nowrap;
+  display:block;
+/*  width: 560px;*/
+  padding-top:10px;
+/*  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;*/
 }
 
-.tweet {
-  padding: 10px;
-  margin: 10px;
-  padding-bottom: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  border-bottom: 1px solid #000;
-}
-
-.tweet a {
-  color: 3C76E8;
-  text-decoration: none;
-  font-weight: 550;
-  max-width: 100px;
+.time {
+  font-size:12px;
+  color:#99aab5;
+  font-style: italic;
 }
 
 .time a {
   font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  color:#66757f;
+}
+
+.pocket-btn {
+  margin-top: 10px;
 }
 
 .userHeader {
   padding: 10px;
-  margin: 10px;
-  color: 7B76E8;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 30px;
   overflow: hidden;
 }
 
 .userHeader img {
   float: left;
-}
-
-.userHeader .name {
-  float: left;
-  line-height: 40px;
-  margin-left: 58px;
-}
-
-body.timeline {
-  background-color:#619D9B;
+  margin-right: 20px;
 }
 
 .about {
   padding: 20px;
   margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
   width: 500px;
   text-align: center;
 }
